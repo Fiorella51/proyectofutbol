@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Skills</title>
+    <link rel="stylesheet" href="cssgoats.css">
+    
+    
+    <script>
+        window.onload = function() {
+            document.body.style.zoom = "180%";
+        };
+
+        function addPlayer() {
+            const playerName = document.getElementById('player-name').value;
+            const playerSpeed = document.getElementById('player-speed').value;
+            const playerPass = document.getElementById('player-pass').value;
+            const playerShot = document.getElementById('player-shot').value;
+            const playerDribble = document.getElementById('player-dribble').value;
+            const playerDefense = document.getElementById('player-defense').value;
+            const playerPhysical = document.getElementById('player-physical').value;
+            const playerpj = document.getElementById('player-pj').value;
+            const playergoles = document.getElementById('player-goles').value;
+            const imageInput = document.getElementById('player-image');
+            const imageFile = imageInput.files[0];
+
+            if (!playerName || !playerSpeed || !playerPass || !playerShot || !playerDribble || !playerDefense || !playerPhysical|| !playerpj|| !playergoles) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            if (!imageFile) {
+                alert("Por favor, selecciona una imagen.");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.readAsDataURL(imageFile);
+
+            reader.onload = function(event) {
+                const imageUrl = event.target.result;
+
+                const playerCard = `
+                    <div class="Jugador1">
+                        <button class="delete-btn" onclick="deletePlayer(this)">Eliminar</button>
+                        <div class="perspective">
+                            <div class="carta_fondo">
+                                <div class="fase_2"></div>
+                                <div class="nombre"><h2>${playerName}</h2></div>
+                                <div class="power"><h6></h6></div>
+                                <div class="fire"></div>
+                                <div class="img_jugador img_jugador1"><img src="${imageUrl}" alt="${playerName}"></div>
+                                <div class="descripcion"><h3>${playerName}</h3></div>
+                                <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                                <div class="linea"></div>
+                                <div class="velocidad"><h3>Velocidad ${playerSpeed}</h3></div>
+                                <div class="pase"><h3>Pase ${playerPass}</h3></div>
+                                <div class="disparo"><h3>Disparo ${playerShot}</h3></div>
+                                <div class="regate"><h3>Regate ${playerDribble}</h3></div>
+                                <div class="defensa"><h3>Defensa ${playerDefense}</h3></div>
+                                <div class="fisico"><h3>Físico ${playerPhysical}</h3></div>
+                                <div class="pj"><h3>Part.Jug ${playerpj}</h3></div>
+                                <div class="goles"><h3>Goles ${playergoles}</h3></div>
+                                
+                                <button class="delete-btn" onclick="deletePlayer(this)">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>`;
+
+                document.getElementById('player-info').insertAdjacentHTML('beforeend', playerCard);
+
+                const players = JSON.parse(localStorage.getItem('players')) || [];
+                players.push({ playerName, playerSpeed, playerPass, playerShot, playerDribble, playerDefense, playerPhysical,playerpj,playergoles, imageUrl });
+                localStorage.setItem('players', JSON.stringify(players));
+
+                document.getElementById('playerForm').reset();
+            };
+        }
+
+        function deletePlayer(button) {
+            const card = button.parentElement;
+            const playerName = card.querySelector('.nombre h2').textContent;
+
+            // Eliminar la tarjeta del DOM
+            card.remove();
+
+            // Obtener la lista de jugadores del almacenamiento local
+            let players = JSON.parse(localStorage.getItem('players')) || [];
+
+            // Filtrar la lista para eliminar el jugador correspondiente
+            players = players.filter(player => player.playerName !== playerName);
+
+            // Guardar la lista actualizada en el almacenamiento local
+            localStorage.setItem('players', JSON.stringify(players));
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const players = JSON.parse(localStorage.getItem('players')) || [];
+
+            players.forEach(player => {
+                const playerCard = `
+                    <div class="Jugador1">
+                         <button class="delete-btn" onclick="deletePlayer(this)">Eliminar</button>
+                        <div class="perspective">
+                            <div class="carta_fondo">
+                                <div class="fase_2"></div>
+                                <div class="nombre"><h2>${player.playerName}</h2></div>
+                                <div class="power"><h6></h6></div>
+                                <div class="fire"></div>
+                                <div class="img_jugador img_jugador1"><img src="${player.imageUrl}" alt="${player.playerName}"></div>
+                                <div class="descripcion"><h3>${player.playerName}</h3></div>
+                                <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                                <div class="linea"></div>
+                                <div class="velocidad"><h3>Velocidad ${player.playerSpeed}</h3></div>
+                                <div class="pase"><h3>Pase ${player.playerPass}</h3></div>
+                                <div class="disparo"><h3>Disparo ${player.playerShot}</h3></div>
+                                <div class="regate"><h3>Regate ${player.playerDribble}</h3></div>
+                                <div class="defensa"><h3>Defensa ${player.playerDefense}</h3></div>
+                                <div class="fisico"><h3>Físico ${player.playerPhysical}</h3></div>
+                                <div class="pj"><h3>Part.Jug ${player.playerpj}</h3></div>
+                                <div class="goles"><h3>Goles ${player.playergoles}</h3></div>
+
+                                <button class="delete-btn" onclick="deletePlayer(this)">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>`;
+                document.getElementById('player-info').insertAdjacentHTML('beforeend', playerCard);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="bg">
+        <a ihref="#" class="brand-logo">LOS MEJORES DEL MUNDO</a>
+      </div>
+
+    <div id="player-info" class="hidden">
+        <div class="card-container">
+            <div class="card" data-speed="91"></div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Lionel Messi</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador1"></div>
+                        <div class="descripcion"><h3>Lionel Andrés Messi Cuccittin</h3></div>
+                        <div class="fire_2"></div>
+                        <div class="fire_3"></div>
+                        <div class="fire_4"></div>
+                        <div class="fire_5"></div>
+                        <div class="fire_6"></div>
+                        <div class="fire_7"></div>
+                        <div class="fire_8"></div>
+                        <div class="fire_9"></div>
+                        <div class="fire_10"></div>
+                        <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 91</h3></div>
+                        <div class="pase"><h3>Pase 97</h3></div>
+                        <div class="disparo"><h3>Disparo 96</h3></div>
+                        <div class="regate"><h3>Regate 98</h3></div>
+                        <div class="defensa"><h3>Defensa 40</h3></div>
+                        <div class="fisico"><h3>Físico 77</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>MBAPEÉ</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador2"></div>
+                        <div class="descripcion"><h3>Kylian Mbapee</h3></div>
+                        
+                        <div class="descripcion_2"><h3>TROFEO KOPA</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 96</h3></div>
+                        <div class="pase"><h3>Pase 78</h3></div>
+                        <div class="disparo"><h3>Disparo 86</h3></div>
+                        <div class="regate"><h3>Regate 91</h3></div>
+                        <div class="defensa"><h3>Defensa 39</h3></div>
+                        <div class="fisico"><h3>Físico 76</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> CR7</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador3"></div>
+                        <div class="descripcion"><h3>Cristiano Ronaldo dos Santos Aveiro</h3></div>
+                        <div class="fire_2"></div>
+                        <div class="fire_3"></div>
+                        <div class="fire_4"></div>
+                        <div class="fire_5"></div>
+                        <div class="fire_6"></div>
+                       
+                        <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 92</h3></div>
+                        <div class="pase"><h3>Pase 81</h3></div>
+                        <div class="disparo"><h3>Disparo 92</h3></div>
+                        <div class="regate"><h3>Regate 91</h3></div>
+                        <div class="defensa"><h3>Defensa 33</h3></div>
+                        <div class="fisico"><h3>Físico 80</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Kane</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador4"></div>
+                        <div class="descripcion"><h3>Harry Kane</h3></div>
+                        <div class="descripcion_2"><h3>Bota de Oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 85</h3></div>
+                        <div class="pase"><h3>Pase 90</h3></div>
+                        <div class="disparo"><h3>Disparo 99</h3></div>
+                        <div class="regate"><h3>Regate 89</h3></div>
+                        <div class="defensa"><h3>Defensa 53</h3></div>
+                        <div class="fisico"><h3>Físico 92</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Bellingham</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador5"></div>
+                        <div class="descripcion"><h3>Jude Bellingham</h3></div>
+                       
+                       
+                        <div class="descripcion_2"><h3>TROFEO KOPA</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 90</h3></div>
+                        <div class="pase"><h3>Pase 90</h3></div>
+                        <div class="disparo"><h3>Disparo 88</h3></div>
+                        <div class="regate"><h3>Regate 96</h3></div>
+                        <div class="defensa"><h3>Defensa 90</h3></div>
+                        <div class="fisico"><h3>Físico 91</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Haaland </h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador6"></div>
+                        <div class="descripcion"><h3>Erling Haaland</h3></div>
+                       
+                        <div class="descripcion_2"><h3>Trofeo Gerd Muller</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 96</h3></div>
+                        <div class="pase"><h3>Pase 80</h3></div>
+                        <div class="disparo"><h3>Disparo 98</h3></div>
+                        <div class="regate"><h3>Regate 91</h3></div>
+                        <div class="defensa"><h3>Defensa 56</h3></div>
+                        <div class="fisico"><h3>Físico 97</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Bruyne</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador7"></div>
+                        <div class="descripcion"><h3>Kevin De Bruyne</h3></div>
+                       
+                       
+                        
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 87</h3></div>
+                        <div class="pase"><h3>Pase 98</h3></div>
+                        <div class="disparo"><h3>Disparo 93</h3></div>
+                        <div class="regate"><h3>Regate 93</h3></div>
+                        <div class="defensa"><h3>Defensa 82</h3></div>
+                        <div class="fisico"><h3>Físico 88</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Vinícius</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador8"></div>
+                        <div class="descripcion"><h3>Vinícius Júnior</h3></div>
+                       
+                       
+                        <div class="descripcion_2"><h3>Trofeo Socrates</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 99</h3></div>
+                        <div class="pase"><h3>Pase 88</h3></div>
+                        <div class="disparo"><h3>Disparo 94</h3></div>
+                        <div class="regate"><h3>Regate 99</h3></div>
+                        <div class="defensa"><h3>Defensa 41</h3></div>
+                        <div class="fisico"><h3>Físico 83</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Lewandowski</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador9"></div>
+                        <div class="descripcion"><h3>Robert Lewandowski</h3></div>
+                    
+                       
+                        <div class="descripcion_2"><h3>Trofeo Gerd Muller</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 93</h3></div>
+                        <div class="pase"><h3>Pase 87</h3></div>
+                        <div class="disparo"><h3>Disparo 98</h3></div>
+                        <div class="regate"><h3>Regate 95</h3></div>
+                        <div class="defensa"><h3>Defensa 50</h3></div>
+                        <div class="fisico"><h3>Físico 95</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>SALAH</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador10"></div>
+                        <div class="descripcion"><h3>Mohamed Salah Hamed Mahrous Ghaly</h3></div>
+                       
+                       
+                        <div class="descripcion_2"><h3>Bota de oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 90</h3></div>
+                        <div class="pase"><h3>Pase 81</h3></div>
+                        <div class="disparo"><h3>Disparo 87</h3></div>
+                        <div class="regate"><h3>Regate 90</h3></div>
+                        <div class="defensa"><h3>Defensa 45</h3></div>
+                        <div class="fisico"><h3>Físico 75</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Neymar</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador11"></div>
+                        <div class="descripcion"><h3>Neymar da Silva Santos Júnior</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 97</h3></div>
+                        <div class="pase"><h3>Pase 98</h3></div>
+                        <div class="disparo"><h3>Disparo 94</h3></div>
+                        <div class="regate"><h3>Regate 98</h3></div>
+                        <div class="defensa"><h3>Defensa 39</h3></div>
+                        <div class="fisico"><h3>Físico 71</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Oblak</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador12"></div>
+                        <div class="descripcion"><h3>Jan Oblak</h3></div>
+                    
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Estirada 85</h3></div>
+                        <div class="pase"><h3>Saques 78</h3></div>
+                        <div class="disparo"><h3>Reflejos 87</h3></div>
+                        <div class="regate"><h3>Velocidad 46</h3></div>
+                        <div class="defensa"><h3>Colocacion 86</h3></div>
+                        <div class="fisico"><h3>Manejo 90</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Kanté</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador13"></div>
+                        <div class="descripcion"><h3>N'Golo Kanté</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 90</h3></div>
+                        <div class="pase"><h3>Pase 90</h3></div>
+                        <div class="disparo"><h3>Disparo 84</h3></div>
+                        <div class="regate"><h3>Regate 91</h3></div>
+                        <div class="defensa"><h3>Defensa 96</h3></div>
+                        <div class="fisico"><h3>Físico 90</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Virgil </h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador14"></div>
+                        <div class="descripcion"><h3>Virgil van Dijk</h3></div>
+            
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 87</h3></div>
+                        <div class="pase"><h3>Pase 91</h3></div>
+                        <div class="disparo"><h3>Disparo 80</h3></div>
+                        <div class="regate"><h3>Regate 91</h3></div>
+                        <div class="defensa"><h3>Defensa 99</h3></div>
+                        <div class="fisico"><h3>Físico 99</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Modrić</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador15"></div>
+                        <div class="descripcion"><h3>Luka Modrić</h3></div>
+                        <div class="fire_2"></div>
+                        <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 85</h3></div>
+                        <div class="pase"><h3>Pase 97</h3></div>
+                        <div class="disparo"><h3>Disparo 86</h3></div>
+                        <div class="regate"><h3>Regate 97</h3></div>
+                        <div class="defensa"><h3>Defensa 85</h3></div>
+                        <div class="fisico"><h3>Físico 83</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Sergio Ramos</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador16"></div>
+                        <div class="descripcion"><h3>Sergio Ramos</h3></div>
+
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 85</h3></div>
+                        <div class="pase"><h3>Pase 86</h3></div>
+                        <div class="disparo"><h3>Disparo 77</h3></div>
+                        <div class="regate"><h3>Regate 87</h3></div>
+                        <div class="defensa"><h3>Defensa 97</h3></div>
+                        <div class="fisico"><h3>Físico 96</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2> Becker</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador17"></div>
+                        <div class="descripcion"><h3>Alisson Becker</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Estirada 94</h3></div>
+                        <div class="pase"><h3>Saques 90</h3></div>
+                        <div class="disparo"><h3>Reflejos 96</h3></div>
+                        <div class="regate"><h3>Velocidad 91</h3></div>
+                        <div class="defensa"><h3>Colocacion 96</h3></div>
+                        <div class="fisico"><h3>Manejo 93</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Mané</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador18"></div>
+                        <div class="descripcion"><h3>Sadio Mané</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 99</h3></div>
+                        <div class="pase"><h3>Pase 95</h3></div>
+                        <div class="disparo"><h3>Disparo 97</h3></div>
+                        <div class="regate"><h3>Regate 98</h3></div>
+                        <div class="defensa"><h3>Defensa 58</h3></div>
+                        <div class="fisico"><h3>Físico 90</h3></div>
+                        <div class="pj"><h3>Part.Jug 779</h3></div>
+                        <div class="goles"><h3>Goles 838</h3></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Neuer</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador19"></div>
+                        <div class="descripcion"><h3>Manuel Neuer</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Estirada 93</h3></div>
+                        <div class="pase"><h3>Saques 94</h3></div>
+                        <div class="disparo"><h3>Reflejos 92</h3></div>
+                        <div class="regate"><h3>Velocidad 61</h3></div>
+                        <div class="defensa"><h3>Colocacion 95</h3></div>
+                        <div class="fisico"><h3>Manejo 93</h3></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Buffon</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_jugador img_jugador20"></div>
+                        <div class="descripcion"><h3>Gianluigi Buffon</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Estirada 96</h3></div>
+                        <div class="pase"><h3>Saques 81</h3></div>
+                        <div class="disparo"><h3>Reflejos 95</h3></div>
+                        <div class="regate"><h3>Velocidad 59</h3></div>
+                        <div class="defensa"><h3>Colocacion 98</h3></div>
+                        <div class="fisico"><h3>Manejo 97</h3></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+    <div class="player-form">
+        <form id="playerForm" onsubmit="event.preventDefault(); addPlayer();">
+            <input type="text" id="player-name" placeholder="Nombre del Jugador" required>
+            <input type="number" id="player-speed" placeholder="Velocidad" required>
+            <input type="number" id="player-pass" placeholder="Pase" required>
+            <input type="number" id="player-shot" placeholder="Disparo" required>
+            <input type="number" id="player-dribble" placeholder="Regate" required>
+            <input type="number" id="player-defense" placeholder="Defensa" required>
+            <input type="number" id="player-physical" placeholder="Físico" required>
+            <input type="number" id="player-pj" placeholder="Part.Jug" required>
+            <input type="number" id="player-goles" placeholder="Goles" required>
+            <input type="file" id="player-image" accept="image/*" required>
+            <button type="submit">Agregar Jugador</button>
+        </form>
+    </div>
+    <div class="chart-button">
+        <a href="grafico.html" target="_blank">Ver Gráfico de Barras</a>
+    </div>
+</body>
+</html>

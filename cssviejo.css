@@ -1,0 +1,652 @@
+
+.Jugador1{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .perspective{
+    perspective: 1000px;
+  }
+  
+  .carta_fondo{
+    height: 200px;
+    width: 150px;
+    background-color: #ffe659;
+    border-radius: 5%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.205);
+    cursor: pointer;
+  }
+  
+  .carta_fondo::before{
+    content: "";
+    height: 190px;
+    width: 140px;
+    background-image: url(fondodorado.png);
+    background-size: cover;
+    border-radius: 5%;
+    position: absolute;
+    z-index: 1;
+    margin-left: calc((150px - 140px)/2);
+  }
+  
+  .carta_fondo::after{
+    content: "";
+    position: absolute;
+    height: 350px;
+    width: 50px;
+    background-image: linear-gradient(black,red);
+    margin-left: calc((150px - 50px)/2);
+    animation: rotar 2s linear infinite; 
+    visibility: hidden;
+  } 
+  
+  .perspective:hover .carta_fondo::after{
+    visibility: visible;
+  }
+  
+  .img_charizard{
+    height: 90px;
+    width: 120px;
+    background-image: url(messi.jpg);
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-left: calc((150px - 125px)/2);
+    top: 25px;
+    border: 4px solid rgb(255, 196, 0);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
+  }
+  
+  
+  
+  
+  .carta_fondo2{
+    height: 190px;
+    width: 140px;
+    background-image: url(fondo_animado.gif);
+    background-size: cover;
+    border-radius: 5%;
+    position: absolute;
+    z-index: 1;
+    margin-left: calc((150px - 140px)/2);
+    visibility: hidden;
+  }
+  
+  .perspective:hover .carta_fondo2{
+  visibility: visible;
+  }
+  
+  @keyframes rotar{
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(360deg);
+    }
+  }
+  
+  .fase_2{
+    position: absolute;
+    background-image: url(balon.jpg);
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    z-index: 3;
+    bottom: 175px;
+    margin-left: 13px;
+    border-radius: 50%;
+  }
+  
+  .fase_2:hover{
+    background-image: url(balon.gif);
+    background-size: cover;
+    border: 1px solid darkred;
+    bottom: 174px;
+  }
+  
+  
+  .nombre{
+    position: absolute;
+    z-index: 3;
+    bottom: 168px;
+    margin-left: 35px;
+  }
+  
+  .nombre h2{
+    font-size: 12px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .nombre h2:hover{
+    color: darkred;
+    text-decoration: underline 2px rgb(255, 196, 0);
+  }
+  
+  .nivel{
+    position: absolute;
+    z-index: 3;
+    bottom: 171px;
+    margin-left: 87px;
+  }
+  
+  .nivel h6{
+    font-size: 4px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .nivel h6:hover{
+    color: darkred;
+    text-decoration: underline 2px rgb(255, 196, 0);
+  }
+  
+  .power{
+    position: absolute;
+    z-index: 3;
+    bottom: 160px;
+    margin-left: 100px;
+  }
+  
+  .power h6{
+    font-size: 8px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  }
+  
+  .power h6:hover{
+    color: darkred;
+    text-decoration: underline 2px rgb(255, 196, 0);
+  }
+  
+  .fire{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 10px;
+    width: 10px;
+    z-index: 3;
+    bottom: 178px;
+    margin-left: 130px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+    border: 1px solid darkred;
+    bottom: 177px;
+  }
+  
+  .descripcion{
+    position: absolute;
+    z-index: 3;
+    bottom: 65px;
+    margin-left: 17px;
+    background-image: linear-gradient(rgb(255, 196, 0),rgb(255, 223, 118));
+    height: 8px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+  }
+  
+  .descripcion h3{
+    font-size: 4.5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+  }
+  
+  .descripcion:hover{
+    box-shadow:  2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32),rgb(211, 0, 0));
+  }
+  
+  
+  
+  .fire_2{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 13px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_2:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_3{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 22px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_3:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_4{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 31px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_4:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_5{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 40px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_5:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_6{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 49px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_6:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_7{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 58px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_7:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_8{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 67px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_8:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_9{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 76px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_9:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_10{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 85px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_10:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .descripcion_2{
+    position: absolute;
+    z-index: 3;
+    bottom: 48px;
+    margin-left: 96px;
+    font-size: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+  }
+  
+  
+  
+  .descripcion_2:hover{
+    color: darkred;
+    text-decoration: underline 1px rgb(255, 196, 0);
+  }
+  
+  .descripcion_3:hover{
+    color: darkred;
+    text-decoration: underline 1px rgb(255, 196, 0);
+  }
+  
+  
+  
+  .linea{
+    height: 1px;
+    width: 40px;
+    background-color: gray;
+    z-index: 3;
+    position: absolute;
+    margin-top: 155px;
+    margin-left: 13px;
+    box-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.418);
+  }
+  
+  .velocidad {
+    position: absolute;
+    z-index: 3;
+    bottom: 38px;
+    margin-left: 13px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .velocidad:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .pase {
+    position: absolute;
+    z-index: 3;
+    bottom: 38px;
+    margin-left: 56px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pase:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .disparo {
+    position: absolute;
+    z-index: 3;
+    bottom: 38px;
+    margin-left: 102px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .disparo:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  /* Nuevos elementos posicionados debajo de los existentes */
+  .regate {
+    position: absolute;
+    z-index: 3;
+    bottom: 24px; /* Ajuste para posicionar debajo de .velocidad */
+    margin-left: 13px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .regate:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .defensa {
+    position: absolute;
+    z-index: 3;
+    bottom: 24px; /* Ajuste para posicionar debajo de .pase */
+    margin-left: 56px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .defensa:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .fisico {
+    position: absolute;
+    z-index: 3;
+    bottom: 24px; /* Ajuste para posicionar debajo de .disparo */
+    margin-left: 102px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fisico:hover {
+    box-shadow: 8px 4px 4px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .skill-btn {
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 20px;
+    color: #000;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .skill-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Estilos adicionales para botones de habilidades específicas */
+  .skill-btn.speed { background-color: #f44336; color: #fff; } /* Velocidad - Rojo */
+  .skill-btn.dribbling { background-color: #4caf50; color: #fff; } /* Dribbling - Verde */
+  .skill-btn.shooting { background-color: #2196f3; color: #fff; } /* Disparo - Azul */
+  .skill-btn.passing { background-color: #ffeb3b; color: #000; } /* Pase - Amarillo */
+  .skill-btn.defense { background-color: #9c27b0; color: #fff; } /* Defensa - Púrpura */
+  .skill-btn.physical { background-color: #ff9800; color: #fff; } /* Físico - Naranja */
+  
+  /* Estilos para la tarjeta de jugador */
+  .Jugador1 {
+    margin-top: 20px;
+  }
+  
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  
+  
+  .nombre h2, .descripcion h3, .descripcion_2 h3, .velocidad h3, .pase h3, .disparo h3, .regate h3, .defensa h3, .fisico h3 {
+    margin: 10px 0;
+  }
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .skill-btn {
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 20px;
+    color: #000;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .skill-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Estilos adicionales para botones de habilidades específicas */
+  .skill-btn.speed { background-color: #f44336; color: #fff; } /* Velocidad - Rojo */
+  .skill-btn.dribbling { background-color: #4caf50; color: #fff; } /* Dribbling - Verde */
+  .skill-btn.shooting { background-color: #2196f3; color: #fff; } /* Disparo - Azul */
+  .skill-btn.passing { background-color: #ffeb3b; color: #000; } /* Pase - Amarillo */
+  .skill-btn.defense { background-color: #9c27b0; color: #fff; } /* Defensa - Púrpura */
+  .skill-btn.physical { background-color: #ff9800; color: #fff; } /* Físico - Naranja */
+  
+  /* Estilos para la tarjeta de jugador */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: -200px;
+  }
+  
+  .Jugador1 {
+    flex: 0 2 calc(20% - 20px); /* Ajusta el tamaño y margen de cada carta */
+    margin: 10px;
+  }
+  
+  .perspective {
+    perspective: 1000px;
+  }
+  

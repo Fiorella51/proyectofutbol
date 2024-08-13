@@ -1,0 +1,799 @@
+
+.Jugador1{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .perspective{
+    perspective: 1000px;
+  }
+
+  body {
+    background-image: url('TIERRAS.jpg');
+    background-size: cover;  
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center; 
+    margin: 0; 
+    padding: 0; 
+
+}
+
+
+  .carta_fondo{
+    height: 200px;
+    width: 150px;
+    background-color: #ffe659;
+    border-radius: 5%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: 0.5s;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.205);
+    cursor: pointer;
+  }
+  
+  .carta_fondo::before{
+    content: "";
+    height: 190px;
+    width: 140px;
+    background-image: url(fondodorado.png);
+    background-size: cover;
+    border-radius: 5%;
+    position: absolute;
+    z-index: 1;
+    margin-left: calc((150px - 140px)/2);
+  }
+  
+  .carta_fondo::after{
+    content: "";
+    position: absolute;
+    height: 350px;
+    width: 50px;
+    background-image: linear-gradient(black,red);
+    margin-left: calc((150px - 50px)/2);
+    animation: rotar 2s linear infinite; 
+    visibility: hidden;
+  } 
+  
+  .perspective:hover .carta_fondo::after{
+    visibility: visible;
+  }
+  
+  .img_jugador{
+    height: 90px;
+    width: 120px;
+    background-image: url(messi.jpg);
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-left: calc((150px - 125px)/2);
+    top: 25px;
+    border: 4px solid rgb(255, 196, 0);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
+    overflow: hidden; 
+  }
+  .img_jugador img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+    object-position: center; /* Centra la imagen en el contenedor */
+}
+  
+  
+  
+  
+ 
+  
+  @keyframes rotar{
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(360deg);
+    }
+  }
+  
+  .fase_2{
+    position: absolute;
+    background-image: url(balon.jpg);
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    z-index: 3;
+    bottom: 175px;
+    margin-left: 13px;
+    border-radius: 50%;
+  }
+  
+  .fase_2:hover{
+    background-image: url(balon.gif);
+    background-size: cover;
+    border: 1px solid darkred;
+    bottom: 174px;
+  }
+  
+  
+  .nombre{
+    position: absolute;
+    z-index: 3;
+    bottom: 168px;
+    margin-left: 35px;
+  }
+  
+  .nombre h2{
+    font-size: 12px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .nombre h2:hover{
+    color: darkred;
+    text-decoration: underline 2px rgb(255, 196, 0);
+  }
+  
+  .nivel{
+    position: absolute;
+    z-index: 3;
+    bottom: 171px;
+    margin-left: 87px;
+  }
+  
+  .nivel h6{
+    font-size: 4px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .nivel h6:hover{
+    color: darkred;
+    text-decoration: underline 2px rgb(255, 196, 0);
+  }
+  
+  .power{
+    position: absolute;
+    z-index: 3;
+    bottom: 160px;
+    margin-left: 100px;
+  }
+  
+  .power h6{
+    font-size: 8px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  }
+  
+  .power h6:hover{
+    color: darkred;
+    text-decoration: underline 2px rgb(255, 196, 0);
+  }
+  
+  .fire{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 10px;
+    width: 10px;
+    z-index: 3;
+    bottom: 178px;
+    margin-left: 130px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+    border: 1px solid darkred;
+    bottom: 177px;
+  }
+  
+  .descripcion{
+    position: absolute;
+    z-index: 3;
+    bottom: 65px;
+    margin-left: 17px;
+    background-image: linear-gradient(rgb(255, 196, 0),rgb(255, 223, 118));
+    height: 8px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+  }
+  
+  .descripcion h3{
+    font-size: 4.5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
+  }
+  
+  .descripcion:hover{
+    box-shadow:  2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32),rgb(211, 0, 0));
+  }
+  
+  
+  
+  .fire_2{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 13px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_2:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_3{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 22px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_3:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_4{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 31px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_4:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_5{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 40px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_5:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_6{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 49px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_6:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_7{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 58px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_7:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_8{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 67px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_8:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_9{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 76px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_9:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .fire_10{
+    position: absolute;
+    background-image: url(balon-oro.jpg);
+    background-size: cover;
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    bottom: 55px;
+    margin-left: 85px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.418);
+  }
+  
+  .fire_10:hover{
+    background-image: url(balon-oro.gif);
+    background-size: cover;
+  }
+  
+  .descripcion_2{
+    position: absolute;
+    z-index: 3;
+    bottom: 40px;
+    margin-left: 96px;
+    font-size: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+  }
+  
+  
+  
+  .descripcion_2:hover{
+    color: darkred;
+    text-decoration: underline 1px rgb(255, 196, 0);
+  }
+  
+  .descripcion_3:hover{
+    color: darkred;
+    text-decoration: underline 1px rgb(255, 196, 0);
+  }
+  
+  
+  
+  .linea{
+    height: 1px;
+    width: 40px;
+    background-color: gray;
+    z-index: 3;
+    position: absolute;
+    margin-top: 155px;
+    margin-left: 13px;
+    box-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.418);
+  }
+  
+  .velocidad {
+    position: absolute;
+    z-index: 3;
+    bottom: 38px;
+    margin-left: 13px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .velocidad:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .pase {
+    position: absolute;
+    z-index: 3;
+    bottom: 38px;
+    margin-left: 56px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pase:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .disparo {
+    position: absolute;
+    z-index: 3;
+    bottom: 38px;
+    margin-left: 102px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .disparo:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  /* Nuevos elementos posicionados debajo de los existentes */
+  .regate {
+    position: absolute;
+    z-index: 3;
+    bottom: 24px; 
+    margin-left: 13px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .regate:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .defensa {
+    position: absolute;
+    z-index: 3;
+    bottom: 24px; 
+    margin-left: 56px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .defensa:hover {
+    box-shadow: 2px 2px 2px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  
+  .fisico {
+    position: absolute;
+    z-index: 3;
+    bottom: 24px; 
+    margin-left: 102px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fisico:hover {
+    box-shadow: 8px 4px 4px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+
+
+
+  /*NUEVA DATA*/
+  .pj {
+    position: absolute;
+    z-index: 3;
+    bottom: 10px; 
+    margin-left: 25px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pj:hover {
+    box-shadow: 8px 4px 4px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+
+  .goles {
+    position: absolute;
+    z-index: 3;
+    bottom: 10px; 
+    margin-left: 85px;
+    font-size: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: #ffe659;
+    border-radius: 10px;
+    height: 8px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .goles:hover {
+    box-shadow: 8px 4px 4px rgba(255, 0, 0, 0.562);
+    background-image: linear-gradient(rgb(255, 77, 32), rgb(211, 0, 0));
+  }
+  /***************************/
+
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+  /* Estilos para la tarjeta de jugador */
+  .Jugador1 {
+    margin-top: 20px;
+    width: 150px; 
+  height: auto; 
+  margin:100px; 
+  }
+  
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .nombre h2, .descripcion h3, .descripcion_2 h3, .velocidad h3, .pase h3, .disparo h3, .regate h3, .defensa h3, .fisico h3 {
+    margin: 10px 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para la tarjeta de jugador */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 80px;
+  }
+  
+  .Jugador1 {
+    flex: 0 2 calc(20% - 20px);  
+    margin: 10px;
+  }
+  
+  .perspective {
+    perspective: 1000px;
+  }
+
+
+/*IMAGENES DISTINTAS */
+.img_1jugador1 {
+    background-image: url(messi1.jpg);
+}
+
+.img_jugador2 {
+    background-image: url(mbappe.jpg);
+}
+
+.img_jugador3 {
+    background-image: url(cr7.jpg);
+}
+
+.img_jugador4 {
+    background-image: url(kane.jpg);
+}
+.img_jugador5 {
+    background-image: url(jude.jpeg);
+}
+.img_jugador6 {
+    background-image: url(halland.jpg);
+}
+.img_jugador7 {
+    background-image: url(bruyne.jpg);
+}
+.img_jugador8 {
+    background-image: url(vinicius.jpeg);
+}
+.img_jugador9 {
+    background-image: url(lewan.jpg);
+}
+.img_jugador10 {
+    background-image: url(sala.jpg);
+}
+.img_jugador11 {
+    background-image: url(neymar.jpg);
+}
+.img_jugador12 {
+    background-image: url(oblak.jpg);
+    
+}
+.img_jugador13 {
+    background-image: url(kante.jpg);
+}
+.img_jugador14 {
+    background-image: url(virgil.webp);
+}
+.img_jugador15 {
+    background-image: url(modric.jpg);
+}
+.img_jugador16 {
+    background-image: url(ramos.jpg);
+}
+.img_jugador17 {
+    background-image: url(images.jpg);
+}
+.img_jugador18 {
+    background-image: url(mane.jpg);
+}
+.img_jugador19 {
+    background-image: url(neuer.jpg);
+}
+.img_jugador20 {
+    background-image: url(buffon.jpg);
+}
+
+
+
+/*TITULO*/
+.titulo {
+    position: absolute;
+    top: 20px; /* Ajusta este valor para mover el título hacia abajo desde la parte superior de la página */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el título horizontalmente */
+    text-align: center; /* Asegura que el texto esté centrado dentro del contenedor */
+    color: white; /* Cambia el color del texto si es necesario para que contraste con la imagen de fondo */
+    z-index: 1; /* Asegura que el título esté por delante de la imagen de fondo */
+}
+
+.brand-logo {
+    top: 0;
+    left: 50%;
+    transform:translateX(-50%) ;
+    margin:0;
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    white-space: nowrap;
+    font-family: 'Comic Sans',cursive;
+    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 6px #292736, 0 0 8px #292736, 0 0 10px #292736, 0 0 12px #292736, 0 0 14px #292736;
+    animation: glow .59s infinite alternate;
+}
+body{
+  background-color:#131219;
+}
+
+@keyframes glow {
+    to {
+     text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #4264d6, 0 0 16px #3121c4, 0 0 20px #1f1480, 0 0 24px #6933e7, 0 0 28px #4333da;
+    }
+  }
+  .brand-logo{
+          text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 6px #292736, 0 0 8px #292736, 0 0 10px #292736, 0 0 12px #292736, 0 0 14px #292736;
+          animation: glow .59s infinite alternate;
+  }
+
+  /*boton de borrar*/
+
+
+
+  .delete-btn {
+    display: block;
+    margin-top: 240px; /* Espacio entre la carta y el botón */
+    position: relative;
+    left: 105px; /* Ajusta este valor para mover el botón a la derecha */
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+/*nuevo generador*/
+/* Asegúrate de que el contenedor tenga un estilo de diseño adecuado */
+#player-info {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten a varias líneas si es necesario */
+  gap: 18px; /* Espacio entre las cartas */
+  margin-top: 0 ;
+  
+  
+}
+
+/* Estilo para cada carta de jugador */
+.Jugador1 {
+  width: 150px; /* Ajusta el ancho según sea necesario */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
+  
+  border-radius: 8px; /* Bordes redondeados opcional */
+   
+  
+   /* Para posicionar el botón de eliminar si es necesario */
+ 
+}
+

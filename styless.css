@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.skill-btn {
+    background-color: #69e9ee;
+    border: none;
+    border-radius: 20px;
+    color: #000;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .skill-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .skill-btn.speed { background-color: #f44336; color: #fff; } /* Velocidad - Rojo */
+  .skill-btn.dribbling { background-color: #4caf50; color: #fff; } /* Dribbling - Verde */
+  .skill-btn.shooting { background-color: #2196f3; color: #fff; } /* Disparo - Azul */
+  .skill-btn.passing { background-color: #ffeb3b; color: #000; } /* Pase - Amarillo */
+  .skill-btn.defense { background-color: #9c27b0; color: #fff; } /* Defensa - Púrpura */
+  .skill-btn.physical { background-color: #ff9800; color: #fff; } /* Físico - Naranja */

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Skills</title>
+    <link rel="stylesheet" href="cssviejo.css">
+    <script>
+        window.onload = function() {
+          document.body.style.zoom = "150%";
+        };
+      </script>
+</head>
+<body>
+    <div class="skills-container">
+        <button class="skill-btn all" onclick="filterSkills('all')">Ver Todos</button>
+        <button class="skill-btn speed" onclick="filterSkills('speed')">Velocidad</button>
+        <button class="skill-btn dribbling" onclick="filterSkills('dribbling')">Dribbling</button>
+        <button class="skill-btn shooting" onclick="filterSkills('shooting')">Disparo</button>
+        <button class="skill-btn passing" onclick="filterSkills('passing')">Pase</button>
+        <button class="skill-btn defense" onclick="filterSkills('defense')">Defensa</button>
+        <button class="skill-btn physical" onclick="filterSkills('physical')">Físico</button>
+    </div>
+
+    <div id="player-info" class="hidden">
+        <div class="card-container">
+            <div class="card" data-speed="91"></div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Lionel Messi</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_charizard"></div>
+                        <div class="descripcion"><h3>Lionel Andrés Messi Cuccittin</h3></div>
+                        <div class="fire_2"></div>
+                        <div class="fire_3"></div>
+                        <div class="fire_4"></div>
+                        <div class="fire_5"></div>
+                        <div class="fire_6"></div>
+                        <div class="fire_7"></div>
+                        <div class="fire_8"></div>
+                        <div class="fire_9"></div>
+                        <div class="fire_10"></div>
+                        <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 91</h3></div>
+                        <div class="pase"><h3>Pase 97</h3></div>
+                        <div class="disparo"><h3>Disparo 96</h3></div>
+                        <div class="regate"><h3>Regate 98</h3></div>
+                        <div class="defensa"><h3>Defensa 40</h3></div>
+                        <div class="fisico"><h3>Físico 77</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Lionel Messi</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_charizard"></div>
+                        <div class="descripcion"><h3>Lionel Andrés Messi Cuccittin</h3></div>
+                        <div class="fire_2"></div>
+                        <div class="fire_3"></div>
+                        <div class="fire_4"></div>
+                        <div class="fire_5"></div>
+                        <div class="fire_6"></div>
+                        <div class="fire_7"></div>
+                        <div class="fire_8"></div>
+                        <div class="fire_9"></div>
+                        <div class="fire_10"></div>
+                        <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 80</h3></div>
+                        <div class="pase"><h3>Pase 97</h3></div>
+                        <div class="disparo"><h3>Disparo 96</h3></div>
+                        <div class="regate"><h3>Regate 98</h3></div>
+                        <div class="defensa"><h3>Defensa 40</h3></div>
+                        <div class="fisico"><h3>Físico 77</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Jugador1">
+                <div class="perspective">
+                    <div class="carta_fondo">
+                        <div class="fase_2"></div>
+                        <div class="nombre"><h2>Lionel Messi</h2></div>
+                        <div class="power"><h6></h6></div>
+                        <div class="fire"></div>
+                        <div class="img_charizard"></div>
+                        <div class="descripcion"><h3>Lionel Andrés Messi Cuccittin</h3></div>
+                        <div class="fire_2"></div>
+                        <div class="fire_3"></div>
+                        <div class="fire_4"></div>
+                        <div class="fire_5"></div>
+                        <div class="fire_6"></div>
+                        <div class="fire_7"></div>
+                        <div class="fire_8"></div>
+                        <div class="fire_9"></div>
+                        <div class="fire_10"></div>
+                        <div class="descripcion_2"><h3>Balones de Oro</h3></div>
+                        <div class="linea"></div>
+                        <div class="velocidad"><h3>Velocidad 71</h3></div>
+                        <div class="pase"><h3>Pase 97</h3></div>
+                        <div class="disparo"><h3>Disparo 96</h3></div>
+                        <div class="regate"><h3>Regate 98</h3></div>
+                        <div class="defensa"><h3>Defensa 40</h3></div>
+                        <div class="fisico"><h3>Físico 77</h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterSkills(skill) {
+            const playerInfo = document.getElementById('player-info');
+            if (skill === 'all') {
+                playerInfo.classList.remove('hidden');
+            } else {
+                playerInfo.classList.add('hidden');
+            }
+            // Puedes agregar más lógica aquí para filtrar por habilidades específicas
+        }
+    </script>
+</body>
+</html>
